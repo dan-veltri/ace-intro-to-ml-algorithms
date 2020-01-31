@@ -1,2 +1,3 @@
-# ace-intro-to-ml-algorithms
-Intro to ML Algorithms Course Materials for ACE Uganda
+# Into to ML Algorithms
+
+Course materials will go here.
