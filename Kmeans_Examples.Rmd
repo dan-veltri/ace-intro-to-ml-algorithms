@@ -1,0 +1,50 @@
+---
+title: "K-means Example"
+author: "Dan Veltri"
+date: "2/3/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Dataset
+
+We will be importing Fishers Iris dataset. It contains 50 samples each for three different Iris spp. (rows)
+
+* Four measurements/features (cols) per flower
+  + sepal length
+  + sepal width
+  + petal length
+  + petal width
+* Species Class is the final column (setosa, versicolor, virginica)
+
+
+```{r iris-data}
+data('iris')
+head(iris) # see what it looks like
+iris.x <- iris[,1:4] # measurements
+iris.y <- iris[,5] # our response labels
+
+summary(iris)
+```
+
+
+## Perform k-Means Clusting
+
+The `kmeans` function comes with the base R stats package. We give it the dataframe, the number of `centers` (** k **), `nstart` the number of times to re-run the procedure, and the algorithm type. Here we use MacQueen but others are available, see: `help(kmeans)`. Inspect the output of the function!
+
+```{r kmeans}
+
+set.seed(12345)
+iris.kmeans <- kmeans(iris.x, centers=3, nstart = 25, algorithm="MacQueen")
+
+print(iris.kmeans)
+
+table(ACTUAL=iris.y, KMeansClusts=iris.kmeans$cluster)
+
+```
+
+## Challenge Questions
+What cluster number appears to have been assigned to each iris species? How could you use these clusters to help visualize them? 
