@@ -10,3 +10,5 @@ If you are using your own laptop, please install one if you do not have it alrea
   + Launch from terminal where Weka is located with: `java -jar weka.jar`
 * R (programming language): [https://cran.r-project.org/](https://cran.r-project.org/)
 * RStudio Desktop: [https://rstudio.com/products/rstudio/](https://rstudio.com/products/rstudio/)
+
+NOTE: `.Rmd` files are [https://rmarkdown.rstudio.com](RMarkdown) files and should be opened in RStudio rather than regular R. These are interactive notebook files similar to Jupyter notebooks for Python. If you're interested in learning more about RMarkdown I have slides from a previous class I've taught on it [https://www.dveltri.com/NIEHS/rmarkdown/](available here).
