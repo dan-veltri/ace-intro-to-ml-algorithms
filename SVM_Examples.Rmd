@@ -1,0 +1,42 @@
+---
+title: "SVM Example"
+author: "Dan Veltri"
+date: "2/3/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+list.of.packages <- c("e1071")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos="http://cran.r-project.org")
+
+library(e1071) # provides basic SVM 
+```
+
+# Example with Iris Data 
+
+```{r iris-data}
+data('iris')
+head(iris) # see what it looks like
+
+# Lets extract the first 100 samples (setosa and versicolor, leaves out virginica)
+# as SVM wants to classify only 2 classes.
+idata <- data.frame(x=iris[1:100,1:4], Species=factor(iris[1:100,5]))
+attach(idata)
+# you can also use svm(x = ..., y = ...) instead of the formula Species ~ .
+svm_linear <- svm(Species~.,data=idata,kernel = "linear", cost=1) 
+
+svm_radial <- svm(Species~.,data=idata,kernel = "radia", cost=1, gamma=10) 
+
+# Use cross validation to try different parameters
+print("Tuning SVM!")
+svm_tune <- tune(svm, Species~.,, data=idata, kernel="radial", ranges=list(cost=10^(-1:3), gamma=c(0.05,0.1,.5,1,2)))
+print(svm_tune$best.parameters)
+
+
+# Make predictions (normally you would do this on a separate test set!)
+preds=predict(svm_model,newdata = idata) #ygird consisting of predicted Response values
+table(Actual=idata$Species,Predicted=preds)
+```
