@@ -1,0 +1,71 @@
+---
+title: "Regression Examples"
+author: "Dan Veltri"
+date: "2/3/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Linear Regression Analysis
+
+### Dataset
+
+We will continue with the Iris data but try to predic on other flower variables
+
+```{r iris-data}
+data('iris')
+head(iris) # see what it looks like
+
+# For regular linear regression we remove Species because it is a nominal response
+iris = iris[,-5]
+
+# Split Training set 60% , Testing set 40%
+train_idx = sample(seq(1:nrow(iris)),round(nrow(iris)*0.6),replace=FALSE)
+iris.tr <- iris[train_idx,] # measurements
+iris.te <- iris[-train_idx,] # our response labels - we can ignore these for linear regression
+
+# Train model
+iris.fit = lm(Sepal.Length ~ ., data=iris.tr)
+summary(iris.fit)
+plot(iris.fit)
+
+# Test on new data
+preds = predict(iris.fit, iris.te,type="response")
+
+plot(iris.te$Sepal.Length,preds,xlab="Sepal Length", ylab="Residual", main="Predicting Sepal Length")
+
+```
+
+## Logistic Regression Analysis 
+
+### Dataset 
+
+We will look at a diabetes data set from Smith et al. (1988) Symposium On Computer Applications and Medical Care pp 261-265), an early diabetes prediction algorithm paper.
+
+It contains 8 numeric attributes for 768 patient samples (all females of Pima Indian heritage) and has a binary response class: tested positive or negative for diabetes.
+
+
+```{r diabetes-data}
+db = read.csv("data/diabetes.csv", header=TRUE)
+attach(db)
+head(db) # see what it looks like
+
+
+# Run Logistic Regression using just pregnancy variable
+preg.fit = glm(class ~ preg, data=bc, family=binomial)
+summary(preg.fit)
+
+# Now try with all variables
+db.fit = glm(class ~ ., data=db,family=binomial)
+
+summary(bc.fit)
+
+confint(bc.fit) # calculate confidence intervals
+exp(coef(bc.fit)["Class"]) # see the odds-ratio
+
+```
+
+
