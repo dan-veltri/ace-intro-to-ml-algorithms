@@ -1,7 +1,7 @@
 ---
 title: "K-means Example"
 author: "Dan Veltri"
-date: "2/3/2020"
+date: "2/11/2020"
 output: html_document
 ---
 
@@ -24,7 +24,7 @@ We will be importing Fishers Iris dataset. It contains 50 samples each for three
 ```{r iris-data}
 data('iris')
 head(iris) # see what it looks like
-iris.x <- iris[,1:4] # measurements
+iris.x <- scale(iris[,1:4]) # measurements - note it's a good idea to scale our data here so that the numbers are on the same scale!
 iris.y <- iris[,5] # our response labels
 
 summary(iris)
@@ -46,5 +46,28 @@ table(ACTUAL=iris.y, KMeansClusts=iris.kmeans$cluster)
 
 ```
 
+
 ## Challenge Questions
 What cluster number appears to have been assigned to each iris species? How could you use these clusters to help visualize them? 
+
+
+## Finding an Optimal *K* using WSS and the Elbow Method
+
+The *factoextra* package is helpful for automatically analyzing the output of k-means. Here is an example of using “Within Sum-of-Squares” (WSS) and also known as “intra-cluster distance”. This tells us how tightly-grouped our clusters are- we assume the tighter the grouping, the better the cluster assignments represent the data. WSS is calculated as the total sum-of-squares of the distances between points and the centroid of that point’s assigned cluster. A *smaller WSS* is considered *better* as it denotes the points being more tightly packed with their centroid.
+
+The `fviz_nbclust` function in factoextra will try different values of *k* for us and print out the WSS for us on the y-axis. We want to choose the *k* where the graph starts to bend or make an “elbow” like shape. Basically we want to find the point where it seems like increasing the size of *k* does not do much to improve our WSS value. Below we can see after `k=3`, there is not too much improvement so we would choose that value.
+
+Note, this method is a bit subjective and you should probably explore the output of k's around the "elbow." There are also other methods out there for selecting *k* for your particular data set, including Bayesian optimization and the "silhouette coefficient" for those interested in exploring further.
+
+```{r selecting-k}
+# install.packages("factoextra") # uncomment and install if you don't have this package
+library(factoextra)
+
+k_eval = fviz_nbclust(iris.x, kmeans, method = "wss") + labs(subtitle = "WSS method")
+
+# See the WSS for each K:
+k_eval$data
+
+#Plot out the results to look for an elbow
+plot(k_eval)
+```
