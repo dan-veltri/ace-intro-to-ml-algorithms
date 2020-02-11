@@ -1,8 +1,8 @@
 # Class Updates (Feb. 11)
 
-Here's a nice article on selecting an appropriate *k* for k-means clustering using R: [https://www.r-bloggers.com/finding-optimal-number-of-clusters/](https://www.r-bloggers.com/finding-optimal-number-of-clusters/)
+*  Here's a nice article on selecting an appropriate *k* for k-means clustering using R: [https://www.r-bloggers.com/finding-optimal-number-of-clusters/](https://www.r-bloggers.com/finding-optimal-number-of-clusters/)
 
-Nice article detailing how to run and interpret the output of linear regression in R (note many of the output statistics discussed are also provided by Weka): [http://r-statistics.co/Linear-Regression.html](http://r-statistics.co/Linear-Regression.html)
+*  Another nice article detailing how to run and interpret the output of linear regression in R (note many of the output statistics discussed are also provided by Weka): [http://r-statistics.co/Linear-Regression.html](http://r-statistics.co/Linear-Regression.html)
 
 
 # Into to Machine Learning Algorithms
