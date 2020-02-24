@@ -1,3 +1,8 @@
+# Class Updates (Feb 24)
+
+
+
+
 # Class Updates (Feb. 11)
 
 *  Here's a nice article on selecting an appropriate *k* for k-means clustering using R: [https://www.r-bloggers.com/finding-optimal-number-of-clusters/](https://www.r-bloggers.com/finding-optimal-number-of-clusters/). I've also updated the R-code example in the repo with a new section showing one way to select *k* using the "elbow method."
@@ -7,7 +12,7 @@
 
 # Into to Machine Learning Algorithms
 
-Part 1+2 Course Materials are now online. Today we will be running examples using Weka and RStudio (feel free to use one or both of these)
+Part 1-3 Course Materials are now online. Today we will be running examples using Weka and RStudio (feel free to use one or both of these)
 
 If you are using a classroom computer, please make sure you can open the programs.
 
