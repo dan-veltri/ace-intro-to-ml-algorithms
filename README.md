@@ -1,5 +1,6 @@
 # Class Updates (Feb 24)
 
+Updated slides, plus R code for RandomForest and PCA. The "swiss-roll" data set has also been added to the data folder.
 
 
 
