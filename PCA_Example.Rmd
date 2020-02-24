@@ -1,5 +1,5 @@
 ---
-title: "Iris PCA Example"
+title: "PCA Example"
 author: "Dan Veltri"
 date: "9/9/2019"
 output:
