@@ -1,0 +1,44 @@
+---
+title: "RandomForest Example"
+author: "Dan Veltri"
+date: "2/24/2020"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+list.of.packages <- c("randomForest")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos="http://cran.r-project.org")
+
+library(randomForest) # provides basic randomForest - the package "ranger" is also good!
+```
+
+# Example with Iris Data 
+
+```{r iris-data}
+data('iris')
+attach(iris)
+
+# randomly get indexes for half of the data
+train_idx = sample(seq(1,nrow(iris)),round(nrow(iris)/2))
+iris.train = iris[train_idx,]
+iris.test = iris[-train_idx,]
+
+
+# Apply randomForest with 100 trees - set importance = T to see feature importance
+iris.rf100 = randomForest(Species ~ ., data = iris.train, ntree=100, importance=TRUE)
+
+# See training performance
+iris.rf100
+
+# Make predictions on Test Data
+preds = predict(iris.rf100, newdata=iris.test)
+
+# See prediction results table
+table(Actual=iris.test$Species, RF_Preds=preds)
+
+# How important was each feature for prediction?
+iris.rf100$importance
