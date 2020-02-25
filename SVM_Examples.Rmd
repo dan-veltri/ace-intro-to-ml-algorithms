@@ -35,8 +35,10 @@ print("Tuning SVM!")
 svm_tune <- tune(svm, Species~.,, data=idata, kernel="radial", ranges=list(cost=10^(-1:3), gamma=c(0.05,0.1,.5,1,2)))
 print(svm_tune$best.parameters)
 
+# Best params are Cost = 0.1, Gamme = 0.05
+svm_radial_best <- svm(Species~.,data=idata,kernel = "radia", cost=0.1, gamma=0.05)
 
 # Make predictions (normally you would do this on a separate test set!)
-preds=predict(svm_model,newdata = idata) #ygird consisting of predicted Response values
+preds=predict(svm_radial_best,newdata = idata) #ygird consisting of predicted Response values
 table(Actual=idata$Species,Predicted=preds)
 ```
