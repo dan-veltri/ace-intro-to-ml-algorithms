@@ -1,10 +1,13 @@
-# Class Updates (Feb 24)
+# Class Update (Feb 25)
+
+Added OpenOffice/LibreOffice formatted slides with fewer animations that should work better with the classroom PCs. Fixed the example SVM R script.
+
+# Class Update (Feb 24)
 
 Updated slides, plus R code for RandomForest and PCA. The "swiss-roll" data set has also been added to the data folder.
 
 
-
-# Class Updates (Feb. 11)
+# Class Update (Feb. 11)
 
 *  Here's a nice article on selecting an appropriate *k* for k-means clustering using R: [https://www.r-bloggers.com/finding-optimal-number-of-clusters/](https://www.r-bloggers.com/finding-optimal-number-of-clusters/). I've also updated the R-code example in the repo with a new section showing one way to select *k* using the "elbow method."
 
