@@ -1,6 +1,6 @@
 # Class Update (Feb 25)
 
-Added OpenOffice/LibreOffice formatted slides with fewer animations that should work better with the classroom PCs. Fixed the example SVM R script.
+Fixed typo in PowerPoint slides and added OpenOffice/LibreOffice formatted slides with fewer animations that should work better with the classroom PCs. Fixed the example SVM R script.
 
 # Class Update (Feb 24)
 
